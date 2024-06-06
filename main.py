@@ -51,7 +51,7 @@ def should_exclude_token(token):
     return bool(pattern.search(name) or pattern.search(description))
 
 def fetch_previous_tokens(deployer_address):
-    url = 'https://client-api-2-74b1891ee9f9.herokuapp.com/coins'
+    url = 'https://frontend-api.pump.fun/coins/user-created-coins/FbwAi1T3kbuj8m81kDTEMmrEEQX5z4sYV4G81YvG8Vgo?offset=0&limit=10&includeNsfw=false'
     params = {
         'offset': 0,
         'limit': 9999,
