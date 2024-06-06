@@ -6,10 +6,6 @@ from rich.console import Console
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import datetime
 import os
-from keyauth import Keyauth
-from keyauth import misc
-import hashlib
-import sys
 import fade
 
 os.system('title Potion Bot - Filter Deployers')
