@@ -70,7 +70,7 @@ def fetch_previous_tokens(deployer_address):
         unique_tokens = {token['mint']: token for token in tokens}.values()
         return unique_tokens
     else:
-        console.print(f"[red]Failed to fetch previous tokens: {response.status_code}[/red]")
+        print(f"Failed to fetch previous tokens: {response.status_code}")
         return None
 
 def filter_deployer(deployer_address):
@@ -120,11 +120,11 @@ def filter_deployer(deployer_address):
         completion_ratio = completed_tokens / non_farm_tokens if non_farm_tokens > 0 else 0
 
         current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        console.print(f"[{current_time}] Deployer {deployer_address} | Tokens: {len(previous_tokens)} | Completed: {completed_tokens} | Ratio: {completion_ratio:.2f} | Highest Market Cap: ${highest_market_cap/1000:.2f}K | Excluded Tokens: {excluded_tokens}")
+        print(f"[{current_time}] Deployer {deployer_address} | Tokens: {len(previous_tokens)} | Completed: {completed_tokens} | Ratio: {completion_ratio:.2f} | Highest Market Cap: ${highest_market_cap/1000:.2f}K | Excluded Tokens: {excluded_tokens}")
 
         for token in token_details:
             completed_text = "Completed" if token['completed'] else "Not Completed"
-            console.print(f"    Token: {token['name']} ({token['symbol']}), Market Cap: ${token['market_cap']/1000:.2f}K, {completed_text}")
+            print(f"    Token: {token['name']} ({token['symbol']}), Market Cap: ${token['market_cap']/1000:.2f}K, {completed_text}")
 
         if check_past_deployments and not valid_market_cap:
             return None
@@ -158,10 +158,10 @@ def process_deployer(deployer_address):
         with open('filtered_deployers_clean.txt', 'a', encoding='utf-8') as clean_file:
             clean_file.write(f"{result['deployer_address']}\n")
 
-        console.print(f"\nDeployer: {result['deployer_address']}, Tokens Created: {result['num_tokens']}, Highest Market Cap: ${result['highest_market_cap']/1000:.2f}K, Completion Ratio: {result['completion_ratio']:.2f}, Excluded Tokens: {result['excluded_tokens']}")
+        print(f"\nDeployer: {result['deployer_address']}, Tokens Created: {result['num_tokens']}, Highest Market Cap: ${result['highest_market_cap']/1000:.2f}K, Completion Ratio: {result['completion_ratio']:.2f}, Excluded Tokens: {result['excluded_tokens']}")
         for token in result['token_details']:
             completed_text = "Completed" if token['completed'] else "Not Completed"
-            console.print(f"    Token: {token['name']} ({token['symbol']}), Market Cap: ${token['market_cap']/1000:.2f}K, {completed_text}")
+            print(f"    Token: {token['name']} ({token['symbol']}), Market Cap: ${token['market_cap']/1000:.2f}K, {completed_text}")
 
 # Initialize the files
 with open('filtered-deployers.txt', 'w', encoding='utf-8') as file:
@@ -177,6 +177,6 @@ with ThreadPoolExecutor(max_workers=10) as executor:
         try:
             future.result()  # We don't need to store result here as it is already handled in process_deployer
         except Exception as e:
-            console.print(f"[red]Error processing {deployer_address}: {e}[/red]")
+            print(f"[red]Error processing {deployer_address}: {e}[/red]")
 
-console.print("\nFiltered deployers have been saved to filtered-deployers.txt and filtered_deployers_clean.txt")
+print("\nFiltered deployers have been saved to filtered-deployers.txt and filtered_deployers_clean.txt")
