@@ -1,4 +1,4 @@
-# Potion-PF-Creator-Filter
+# PF Creator Filter
 Filter pump.fun creators.
 
 follow me im cooking: https://x.com/decode0x
