@@ -1,4 +1,4 @@
-# Deployer Filter v1.0.3
+# Pumpfun Deployer Filter v1.0.3
 
 ## Overview
 
