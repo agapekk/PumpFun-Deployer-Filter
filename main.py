@@ -8,13 +8,10 @@ import datetime
 import os
 import fade
 
-os.system('title Potion Bot - Filter Deployers')
+os.system('title Filter PF Deployers')
 
 banner1 = """  
-  ___  ___  ___  _  ___  _ _ 
- | . \| . ||_ _|| || . || \ |
- |  _/| | | | | | || | ||   |
- |_|  `___' |_| |_|`___'|_\_|\033[0;37m Deployer Filter v1.0.3"""
+Deployer Filter v1.0.3"""
 print(fade.pinkred(banner1))
 
 # Read deployer addresses from a file
